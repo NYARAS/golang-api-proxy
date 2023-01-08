@@ -1,9 +1,4 @@
-events {
-    worker_connections 1024;
-}
-http {
-  server_tokens off;
-  server {
+server {
     listen ${LISTEN_PORT};
     root  /var/www;
 
@@ -26,9 +21,9 @@ http {
     }
 
     location /api/ {
-      proxy_set_header X-Forwarded-For $remote_addr;
-      proxy_set_header Host            $http_host;
-      proxy_pass ${APP_HOST}:${APP_PORT};
+        proxy_pass              http://${APP_HOST}:${APP_PORT}/;
+        proxy_http_version  1.1;
+        proxy_redirect      default;
+        client_max_body_size    10M;
     }
-  }
 }
