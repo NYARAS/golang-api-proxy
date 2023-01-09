@@ -1,6 +1,6 @@
 # Golang App API Proxy
 
-NGINX Proxy app for Golang app deployment
+NGINX Proxy app for Golang API Deployment
 
 ## Usage
 
